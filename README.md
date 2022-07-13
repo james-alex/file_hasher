@@ -2,14 +2,14 @@
 
 A utility for hashing one or more files with the XXH3 hashing algorithm.
 
-`file_hasher` relies on the [xx3h](https://pub.dev/packages/xxh3) package.
+`file_hasher` relies on the [xxh3](https://pub.dev/packages/xxh3) package.
 
 ## About
 
 `file_hasher` works by splitting files into chunks, individually hashing
 each chunk with the [XXH3](https://github.com/Cyan4973/xxHash/) hashing
-algorithm, combining each hash with the existing digest with the bit-wise
-exclusive-or operator (`^`), and returning the result.
+algorithm, then combining each hash with the existing digest with the
+bit-wise exclusive-or operator (`^`), and returning the result.
 
 The [FileHasher] utility class provides a method to hash individual files,
 [hash], as well as a method to hash multiple files, [smash], and their
@@ -63,15 +63,15 @@ print(FileHasher.smashSync(files));
 ### File extension methods
 
 `file_hasher` extends the [File] object from the `dart:io` package with two
-methods: [xx3h] and [xx3hSync]; which call [FileHasher]'s [hash] and [hashSync]
+methods: [xxh3] and [xxh3Sync]; which call [FileHasher]'s [hash] and [hashSync]
 methods respectively.
 
 ```dart
 // Asynchronously hash the file.
-print(await file.xx3h());
+print(await file.xxh3());
 
 // Synchronously hash the files.
-print(file.xx3hSync());
+print(file.xxh3Sync());
 ```
 
 ## Parameters
@@ -90,7 +90,7 @@ final hash = await FileHasher.hash(
 );
 ```
 
-## chunkSize
+### chunkSize
 
 [chunkSize] sets the number of bytes to include in each chunk of data being
 hashed; changing the [chunkSize] will result in different hashes being returned
@@ -98,13 +98,13 @@ for any files containing more bytes than the [chunkSize].
 
 [chunkSize] defaults to `2500`.
 
-## seed
+### seed
 
 A [seed] can be provided as an [int] to randomize the hash function.
 
 [seed] defaults to `0`.
 
-## secret
+### secret
 
 An optional [secret] can also be provided as a [Uint8List] to
 randomize the hash function.
