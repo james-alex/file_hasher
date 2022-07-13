@@ -1,6 +1,6 @@
 name: file_hasher
 description: A utility for hashing one or more files with the XXH3 hashing algorithm.
-version: 0.1.0
+version: 0.1.0+0
 repository: https://github.com/james-alex/file_hasher
 
 environment:
